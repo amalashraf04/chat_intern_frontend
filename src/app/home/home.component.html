@@ -1,0 +1,39 @@
+<!-- <app-header></app-header>
+<div class="conatiner"   style="margin-bottom: 50px;" >  
+    <div class="row"  style="margin-left: 100px;margin-top: 200px;">
+        <div class="col-6 mt-5">
+         <div>
+            <h2  style="color:  #22215d;;">Welcome to Chat app</h2>
+             <h5  style="color: #5a8c8c; ;" >A Real Time Chat Application</h5>
+             <br>
+             <div class="button-container">
+                <button id="b1"  type="button" class="btn btn-success"  (click)="SignupForm()">SignUp</button>
+                <button  id="b2"  type="button" class="btn btn-success"(click)="LoginForm()" >LogIn</button>
+            </div>            
+        </div>
+        </div>
+         <div class="col-6">
+            <ng-container *ngIf="showLoginForm && !showSignupForm">
+                <app-login></app-login>
+              </ng-container>
+              <ng-container *ngIf="showSignupForm">
+                <app-signup></app-signup>
+              </ng-container>
+        </div>
+    </div>
+</div> -->
+
+<header class="header">
+	<div class="brand-box">
+		<span class="brand">Talk</span>
+	</div>
+	
+	<div class="text-box">
+		<h1 class="heading-primary">
+			<span class="heading-primary-main">Talk</span>
+			<span class="heading-primary-sub">A Real time chat app</span>
+		</h1>
+		<a href="signup" class="btn btn-white btn-animated">Sign Up</a>
+        <a href="login" class="btn btn-white btn-animated">Login</a>
+	</div>
+</header>
