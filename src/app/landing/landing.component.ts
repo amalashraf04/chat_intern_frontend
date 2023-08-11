@@ -25,6 +25,8 @@ export class LandingComponent {
   url:any;
   socket = io('http://localhost:3001');
   
+//pic
+profilePictureUrl: string | undefined;
 
   constructor(private chatService: BackendService,private fb:FormBuilder,private route:ActivatedRoute,
     private router :Router,private messageservice:ChatService){
@@ -38,13 +40,40 @@ export class LandingComponent {
   }
 
   ngOnInit(){
-
+    this.fetchUserProfilePicture();
+    // this.friendprofilepicture();
     this.socket.emit('loggedinusers',localStorage.getItem('userid'));
     // this.onlinestatus()
       this.uniquelogin();
 
   }
-  
+
+  fetchUserProfilePicture() {
+    const userId = localStorage.getItem('userid');
+    if (userId) {
+      this.chatService.getUserProfilePicture(userId).subscribe(
+        (response: any) => {
+          // Assuming the response contains the URL of the profile picture
+          this.profilePictureUrl = 'http://localhost:3000' + response.profilePictureUrl;
+        },
+        (error) => {
+          console.error('Error fetching profile picture:', error);
+        }
+      );
+    }
+  }
+
+  // friendprofilepicture(){
+  //   const userId = localStorage.getItem('userid');
+  //   const friendid = this.userdash.friends.find((friend: any) => friend._id === userId);
+  //   if (friendid) {
+  //     const bobProfilePictureUrl = 'http://localhost:3000/uploads/' + friendid.pic;
+  //     console.log('friends Profile Picture URL:', bobProfilePictureUrl);
+  //   } else {
+  //     console.log('Bob not found in friends list.');
+  //   }
+  // }
+
   invite() {
     let friend = this.inviteform.value;
     let userid = this.route.snapshot.params['id'];

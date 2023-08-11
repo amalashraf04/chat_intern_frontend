@@ -33,7 +33,7 @@
   
 	height: 450px;
   
-	background: transparent;
+	background: #7989dd;
   
 	border: none;
   
@@ -133,31 +133,7 @@
   
  
   
-  .forget {
-	margin: -10px 0 17px;
-  
-	font-size: 0.9em;
-  
-	color: #fff;
-  
-	display: flex;
-  
-	justify-content: space-between;
-  }
-  
-  .forget label input {
-	margin-right: 3px;
-  }
-  
-  .forget a {
-	color: #fff;
-  
-	text-decoration: none;
-  }
-  
-  .forget a:hover {
-	text-decoration: underline;
-  }
+
   
   button {
 	width: 100%;

@@ -15,6 +15,9 @@
     width: 100px;
 
   }  */
+  .navbar-blue {
+    background-color: blue; /* Change to your preferred shade of blue */
+  }
   body {
   	font-family: 'Lato', sans-serif;
   	font-weight: 400;
@@ -22,7 +25,10 @@
   	line-height: 1.7;
   	color: #eee;
 }
-
+.logo {
+	max-width: 50px; /* Adjust this value to your desired width */
+	max-height: 50px; /* Adjust this value to your desired height */
+  }
 .header {
   	height: 100vh;
   	background-image: 

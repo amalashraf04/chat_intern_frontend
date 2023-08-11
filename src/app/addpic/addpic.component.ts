@@ -1,6 +1,7 @@
 import { Component,ElementRef, ViewChild } from '@angular/core';
 import { BackendService } from '../backend.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-addpic',
@@ -10,14 +11,10 @@ import { Router } from '@angular/router';
 export class AddpicComponent {
 
 
-  // title ='uploadfile'
-  // @ViewChild('singleInput', { static: false })
-  // singleInput!: ElementRef;
-  // files:any
-  // learner:any
+ 
 
 
-constructor(private api:BackendService,private router:Router){}
+constructor(private api:BackendService,private router:Router,private loc:Location){}
     files:  any;
 
 selectfile(event:any){
@@ -29,13 +26,14 @@ addpic(){
   const formdata = new FormData();
   formdata.append('file',this.files)
   const userid = localStorage.getItem('userid');
+  console.log(userid);
  this.api.addpic(formdata,userid).subscribe((res:any)=>{
   console.log(res);
 
  })
- alert('Photo uploaded')
+ alert('Profile Photo uploaded')
 
-//  this.router.navigate(['/']);
+ this.loc.back();
 }
 
 

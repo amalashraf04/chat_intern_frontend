@@ -36,7 +36,7 @@ const routes: Routes = [
   ]
 },
 { path: 'addfriend/:id',canActivate:[AuthGuard], component: AddfriendComponent },
-{ path :'pic',component:AddpicComponent}
+{ path :'profileimage',component:AddpicComponent}
 ];
 
 @NgModule({

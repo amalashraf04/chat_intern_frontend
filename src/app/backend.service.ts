@@ -55,10 +55,7 @@ saveEmail(email:any){
   return this.http.post(`${this.api}/email`,email)
 }
 
-//for forgot password
-checkOTP(otp:any){
-  return this.http.post(`${this.api}/otp`,otp)
-}
+
 
 addfriend(value:any,id:any){
   console.log(value)
@@ -96,6 +93,9 @@ addpic(formdata:any,userid:any){
 
   return this.http.post(`${this.api}/file/${userid}`,formdata)
 
+}
+getUserProfilePicture(userid: any) {
+  return this.http.get<any>(`${this.api}/getProfilePicture/${userid}`);
 }
 
 gettoken() :boolean{

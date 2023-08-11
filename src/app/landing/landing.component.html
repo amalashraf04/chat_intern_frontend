@@ -1,29 +1,46 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" >Talk</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
+   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" >
+    <img src="/assets/log1.png" class="logo" alt="Logo">
+    Talk
+  </a>
+ 
+
 
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <!-- <i class="bi bi-gear-fill" style="color: white; padding-right: 20px;" ></i> -->
-      <button class="btn btn-outline-secondary" style="color: white; margin-right: 20px;" type="button" (click)="logout()">Logout</button>
+      <div class="avatar-container" *ngIf="profilePictureUrl">
+        <img [src]="profilePictureUrl" alt="Avatar" class="avatar-img">
+      </div>
+  
+      <div class="user-info">
+        <span style="color: white;">{{userdash?.name}}</span>
+        <span><div class="btn-group me-2">
+          <!-- <button type="button" id="b1" class="btn btn-sm btn-outline-secondary" routerLink="/addfriend/{{userdash?._id}}">Add Friend</button> -->
+          <button type="button" id="b2" style="color: white; margin-left: 20px;" class="btn btn-sm btn-outline-secondary" routerLink="/profileimage">Change Profile Photo</button>
+        
+        </div></span>
+        <button class="btn btn-outline-secondary" style="color: white; margin-left: 20px;" type="button" (click)="logout()">Logout</button>
+      </div>
     </div>
-
   </div>
+  
+
 </header>
+
+
 <main class="col-md-9 ms-sm-auto col-lg-12 px-md-4"  >
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h4  style="color: rgb(84, 83, 83);">{{userdash?.name}}     {{userdash?.username}}</h4>
+    
       <!-- <img [src]="dp" class="img-fluid img-thumbnail" alt="..."> -->
         <!-- <img [src]="dp" class="img-fluid img-thumbnail" alt="Profile Picture"> -->
       
-    <div class="btn-toolbar mb-2 mb-md-0">
+    <!-- <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
         <button type="button" id="b1" class="btn btn-sm btn-outline-secondary" routerLink="/addfriend/{{userdash?._id}}">Add Friend</button>
         <button type="button" id="b2" class="btn btn-sm btn-outline-secondary" routerLink="/pic">Add photo</button>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -33,18 +50,32 @@
       <div class="col-lg-4">
         <div class="card chat-app">
           <section>
+            
+            
             <div id="plist" class="people-list">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <!-- <span class="input-group-text"><i class="fa fa-search"></i></span> -->
-                </div>
-                <!-- <input type="text" class="form-control" placeholder="Search..."> -->
-                 <h5  style="text-align: center; color: aliceblue;" >CHAT</h5>
-              </div>
+              <!-- <div class="input-group">
+              
+                
+                 <button class="btn btn-outline-secondary add-friend-btn" (click)="invite()">Add Friend</button>
+                 <h5 style="text-align:center;margin-left:50px; color: rgb(0, 3, 5);" >Users</h5>
+                 <button type="button" id="b1" style="text-align: right;" class="btn btn-sm btn-outline-secondary" routerLink="/addfriend/{{userdash?._id}}">Add Friend</button>
+                 <i class="fas fa-user-plus"></i> 
+            </div> -->
+
+            <div class="input-group user-section">
+              <h5 class="users-heading">  Users</h5>
+              <button type="button" id="b1" class="btn btn-sm btn-outline-secondary add-friend-btn" routerLink="/addfriend/{{userdash?._id}}">
+                <i class="fas fa-user-plus"></i>
+                Add Friend
+              </button>
+            </div>
               <ul class="list-unstyled chat-list mt-2 mb-0" *ngFor="let item of userdash?.friends;let i = index">
                 <a (click)="chathead(item._id)">
                   <li class="clearfix">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                    <!-- <div class="avatar-container">
+                      <img [src]="bobProfilePictureUrl" alt="avatar">
+                    </div> -->
+                    <img src="https://www.nic.in/wp-content/uploads/2021/12/chatbot.png" alt="avatar">
                     <div class="about">
                       <div class="name"  style="color: aliceblue;"  >{{ item.username }}</div>
                       <div class="status"><i class="fa fa-circle " [ngStyle]="{'color': statusArray[i] === 'online' ? '#198754' : '#dc3545'}" ></i> <span  style="color: white;">{{statusArray[i]}}</span> </div>
